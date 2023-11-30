@@ -18,9 +18,8 @@ class MyApp extends StatelessWidget {
           body: Column(
               children: [
                 Row(
-
                   children: [
-                    Padding(padding: EdgeInsets.fromLTRB(20, 10, 10, 5)),
+                    Padding(padding: EdgeInsets.fromLTRB(10, 10, 10, 5)),
                     Image.asset("image/scissors.jpeg",width: 100,height: 100,)],
                 ),
                 Row(
@@ -35,7 +34,7 @@ class MyApp extends StatelessWidget {
                 SizedBox(height: 5),
                 Row(
                   children: [
-                    Padding(padding: EdgeInsets.symmetric(horizontal: 350.0)),
+                    Padding(padding: EdgeInsets.symmetric(horizontal: 80.0)),
                     Text("Services",
                       style: TextStyle(
                         fontSize: 25,
