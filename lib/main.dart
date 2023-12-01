@@ -9,12 +9,12 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         home: Scaffold(
+          backgroundColor: Colors.brown,
           body: Column(
               children: [
                 Row(
@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
                 ),
                 Row(
                   children: [
-                    Padding(padding: EdgeInsets.symmetric(horizontal: 30.0)),
+                    Padding(padding: EdgeInsets.symmetric(horizontal: 14.0)),
                     Text(
                       "Scissor's",
                       style: TextStyle(fontSize: 20),
@@ -34,12 +34,12 @@ class MyApp extends StatelessWidget {
                 SizedBox(height: 5),
                 Row(
                   children: [
-                    Padding(padding: EdgeInsets.symmetric(horizontal: 80.0)),
+                    Padding(padding: EdgeInsets.symmetric(horizontal: 350.0)),
                     Text("Services",
                       style: TextStyle(
                         fontSize: 25,
                         fontWeight: FontWeight.bold,
-                        color: Colors.indigo,
+                        color: Colors.black54,
                       ),)
                   ],
                 ),
