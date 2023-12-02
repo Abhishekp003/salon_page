@@ -20,7 +20,7 @@ class _ListScreenState extends State<ListScreen> {
               itemCount: ServicesList.length,
               itemBuilder: (context, index) {
                 Services service = ServicesList[index];
-                return Card(
+                return Card(color: Colors.brown.shade100,
                   child: ListTile(
                     leading: Image.asset(
                       service.images,
@@ -86,7 +86,7 @@ class _ListScreenState extends State<ListScreen> {
   void _showSelectedServices(BuildContext context) {
     double totalAmount = 0.0;
 
-    showModalBottomSheet(backgroundColor:Colors.teal[200],
+    showModalBottomSheet(backgroundColor:Colors.grey[200],
       context: context,
       builder: (BuildContext context) {
         for (Services service in selectedServices) {

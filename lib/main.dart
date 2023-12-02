@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         home: Scaffold(
-          backgroundColor: Colors.blueGrey[400],
+          backgroundColor: Colors.blueGrey[300],
           body: Column(
               children: [
                 Row(
