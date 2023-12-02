@@ -1,6 +1,4 @@
-import 'dart:developer';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:salon_page/screens/service_screen.dart';
 

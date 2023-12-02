@@ -86,7 +86,7 @@ class _ListScreenState extends State<ListScreen> {
   void _showSelectedServices(BuildContext context) {
     double totalAmount = 0.0;
 
-    showModalBottomSheet(backgroundColor:Colors.grey,
+    showModalBottomSheet(backgroundColor:Colors.teal[200],
       context: context,
       builder: (BuildContext context) {
         for (Services service in selectedServices) {
@@ -100,12 +100,12 @@ class _ListScreenState extends State<ListScreen> {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Text('Services'),
+              Text('My Cart'),
               for (Services service in selectedServices) ...[
                 SizedBox(height: 8, width: 40),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Text(
                       service.name,
@@ -123,7 +123,7 @@ class _ListScreenState extends State<ListScreen> {
               SizedBox(height: 16, width: 40),
               Text(
                 'Total Amount: Rs. $totalAmount',
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
               ),
               ElevatedButton(
                 onPressed: () {
