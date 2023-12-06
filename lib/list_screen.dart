@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:salon_page/screens/confirmation_screen.dart';
 import 'package:salon_page/screens/service_screen.dart';
 
 class ListScreen extends StatefulWidget {
@@ -18,7 +19,6 @@ class _ListScreenState extends State<ListScreen> {
         children: [
           Expanded(
             child: ListView.builder(
-              padding: EdgeInsets.symmetric(horizontal: 40.0),
               itemCount: ServicesList.length,
               itemBuilder: (context, index) {
                 Services service = ServicesList[index];
@@ -26,8 +26,8 @@ class _ListScreenState extends State<ListScreen> {
                   child: ListTile(
                     leading: Image.asset(
                       service.images,
-                      width: 80,
-                      height: 60,
+                      width: 60,
+                      height: 40,
                       fit: BoxFit.fitWidth,
                     ),
                     title: Column(
@@ -35,33 +35,32 @@ class _ListScreenState extends State<ListScreen> {
                       children: [
                         Text(
                           service.name,
-                          style: TextStyle(
+                          style: GoogleFonts.openSans(
                             fontSize: 30,
                             fontWeight: FontWeight.bold,
-                            height: 2,
                           ),
                         ),
                         Text(
                           service.price,
-                          style: TextStyle(
+                          style: GoogleFonts.poppins(
                             fontWeight: FontWeight.w200,
                           ),
                         ),
                       ],
                     ),
-                    subtitle: Text(service.description),
+                    subtitle: Text(service.description,style: GoogleFonts.poppins()),
+
                     trailing: OutlinedButton(
                       onPressed: () {
                         _toggleService(service);
                       },
                       style: OutlinedButton.styleFrom(
-                        primary: Colors.blue, // Button background color
                       ),
                       child: Text(
                         selectedServices.contains(service) ? 'Remove' : 'Add',
-                        style: GoogleFonts.b612(
+                        style: GoogleFonts.poppins(
                           textStyle: TextStyle(
-                            color: Colors.deepPurple,
+                            color: Colors.brown,
                             letterSpacing: .5,
                             fontSize: 20,
                           ),
@@ -111,7 +110,7 @@ class _ListScreenState extends State<ListScreen> {
                   Colors.black.withOpacity(0.7),
                   Colors.black.withOpacity(0.7),
                   Colors.black.withOpacity(0.7),
-                  Colors.grey.withOpacity(0.4)
+                  Colors.grey.withOpacity(0.4),
                 ], begin: Alignment.topLeft, end: Alignment.bottomRight),
                 borderRadius: BorderRadius.all(Radius.circular(30)),
               ),
@@ -120,8 +119,8 @@ class _ListScreenState extends State<ListScreen> {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Text(
-                    'Selected Services',
-                    style: GoogleFonts.acme(
+                    'Services',
+                    style: GoogleFonts.openSans(
                       textStyle: TextStyle(
                         color: Colors.white,
                         letterSpacing: .5,
@@ -141,7 +140,7 @@ class _ListScreenState extends State<ListScreen> {
                       children: [
                         Text(
                           service.name,
-                          style: GoogleFonts.b612(
+                          style: GoogleFonts.openSans(
                             textStyle: TextStyle(
                               color: Colors.white,
                               letterSpacing: .5,
@@ -152,7 +151,7 @@ class _ListScreenState extends State<ListScreen> {
                         SizedBox(width: 10),
                         Text(
                           '-',
-                          style: GoogleFonts.b612(
+                          style: GoogleFonts.poppins(
                             textStyle: TextStyle(
                               color: Colors.white,
                               letterSpacing: .5,
@@ -163,7 +162,7 @@ class _ListScreenState extends State<ListScreen> {
                         SizedBox(width: 10),
                         Text(
                           service.price,
-                          style: GoogleFonts.b612(
+                          style: GoogleFonts.poppins(
                             textStyle: TextStyle(
                               color: Colors.white,
                               letterSpacing: .5,
@@ -186,12 +185,15 @@ class _ListScreenState extends State<ListScreen> {
                     ),
                   ),
                   SizedBox(height: 10),
-                  // Conditionally render RawMaterialButton
                   if (totalAmount > 0)
                     RawMaterialButton(
                       onPressed: () {
                         Navigator.pop(context);
-                      },
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => ConfirmationScreen()));
+
+                         },
                       fillColor: Colors.black,
                       constraints: BoxConstraints(maxHeight: 100),
                       elevation: 2,
@@ -200,7 +202,7 @@ class _ListScreenState extends State<ListScreen> {
                       ),
                       child: Text(
                         'Book',
-                        style: GoogleFonts.fahkwang(
+                        style: GoogleFonts.openSans(
                           textStyle: TextStyle(
                             color: Colors.white,
                             letterSpacing: .6,

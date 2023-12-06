@@ -1,34 +1,39 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class ConfirmationScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        backgroundColor: Colors.white,
-        body: Container(
-          padding: EdgeInsets.only(top: 80),
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage("image/background.jpeg",),
-              fit: BoxFit.cover,),
+    return Scaffold(
+      body: Stack(
+        children: [
+          Container(
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage("image/background2.jpeg"),
+                fit: BoxFit.cover,
+              ),
+            ),
           ),
-          child: Column(
+          Container(
+            decoration: BoxDecoration(color: Color.fromRGBO(255, 255, 255, 0.8)),
+          ),
+
+          Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Center(
                 child: Image.asset(
-                  "image/scissors.jpeg",
+                  "image/scissors2.png",
                   width: 120,
                   height: 120,
                 ),
               ),
               Text(
                 "Scissor's",
-                style: TextStyle(
-                  fontSize: 35,
-                  color: Colors.white,
+                style: GoogleFonts.openSans(
+                  fontSize: 30,
+                  color: Colors.black,
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -65,24 +70,22 @@ class ConfirmationScreen extends StatelessWidget {
                           width: 85,
                           height: 70,
                         ),
-                        SizedBox(width: 0), // Add space between the image and text
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
-
                           children: [
                             Text(
-                              "Booking is Confirmed for",
-                              style: TextStyle(
-                                fontSize: 20,
-                                color: Colors.black,
-                                fontWeight: FontWeight.bold,
-                              ),
+                                "Booking is Confirmed for",
+                                style: GoogleFonts.openSans(
+                                  fontSize: 20,
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold,
+                                )
                             ),
                             SizedBox(height: 5),
 
                             Text(
                               "Name:",
-                              style: TextStyle(
+                              style: GoogleFonts.openSans(
                                 fontSize: 18,
                                 color: Colors.black,
                                 fontWeight: FontWeight.bold,
@@ -90,7 +93,7 @@ class ConfirmationScreen extends StatelessWidget {
                             ),
                             Text(
                               "Ph No.:",
-                              style: TextStyle(
+                              style: GoogleFonts.openSans(
                                 fontSize: 18,
                                 color: Colors.black,
                                 fontWeight: FontWeight.bold,
@@ -109,7 +112,7 @@ class ConfirmationScreen extends StatelessWidget {
                         children: [
                           Text(
                             "Scissor's",
-                            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
+                            style: GoogleFonts.openSans(fontWeight: FontWeight.bold, fontSize: 30, color: Colors.black),
                           ),
                           Icon(
                             Icons.calendar_month_sharp,
@@ -117,11 +120,11 @@ class ConfirmationScreen extends StatelessWidget {
                             color: Colors.blueGrey,
                           ),
                           SizedBox(height: 5,),
-                          Text(("Wednesday"),style: TextStyle(fontSize: 20,fontWeight: FontWeight.w500),),
+                          Text(("Wednesday"),style: GoogleFonts.poppins(fontSize: 20,fontWeight: FontWeight.w500,color: Colors.black),),
                           SizedBox(height: 2,),
-                          Text(("29-11-2023"),style: TextStyle(fontSize: 20,fontWeight: FontWeight.w500),),
+                          Text(("29-11-2023"),style: GoogleFonts.poppins(fontSize: 20,fontWeight: FontWeight.w500,color: Colors.black),),
                           SizedBox(height: 2,),
-                          Text(("11am - 12pm"),style: TextStyle(fontSize: 15,fontWeight: FontWeight.w500),),
+                          Text(("11am - 12pm"),style: GoogleFonts.poppins(fontSize: 20,fontWeight: FontWeight.w500,color: Colors.black),),
                         ],
                       ),
                     ),
@@ -130,7 +133,7 @@ class ConfirmationScreen extends StatelessWidget {
               ),
             ],
           ),
-        ),
+        ],
       ),
     );
   }
