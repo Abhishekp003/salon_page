@@ -22,6 +22,7 @@ class ConfirmationScreen extends StatelessWidget {
           Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
+              Padding(padding: EdgeInsets.symmetric(vertical: 35)),
               Center(
                 child: Image.asset(
                   "image/scissors2.png",

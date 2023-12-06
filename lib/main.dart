@@ -46,7 +46,7 @@ class _MyAppState extends State<MyApp> {
               ),
               Row(
                 children: [
-                  Padding(padding: EdgeInsets.only(left: 20.0)),
+                  Padding(padding: EdgeInsets.symmetric(horizontal: 5)),
                   ClipRRect(
                     borderRadius: BorderRadius.circular(10.0),
                     child: Image.asset(
@@ -65,12 +65,7 @@ class _MyAppState extends State<MyApp> {
                     ("Scissor's"),
                     style: GoogleFonts.openSans(fontSize: 20,fontWeight: FontWeight.w700),
                   ),
-                ],
-              ),
-              SizedBox(height: 5),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
+              SizedBox(width: 20,),
                   Text(
                       "Services",
                       style:GoogleFonts.openSans(fontSize: 30,fontWeight: FontWeight.bold)

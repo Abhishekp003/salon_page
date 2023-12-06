@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:salon_page/screens/confirmation_screen.dart';
 import 'package:salon_page/screens/service_screen.dart';
 
+
 class ListScreen extends StatefulWidget {
   @override
   _ListScreenState createState() => _ListScreenState();
@@ -14,66 +15,78 @@ class _ListScreenState extends State<ListScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(
-        children: [
-          Expanded(
-            child: ListView.builder(
-              itemCount: ServicesList.length,
-              itemBuilder: (context, index) {
-                Services service = ServicesList[index];
-                return Card(
-                  child: ListTile(
-                    leading: Image.asset(
-                      service.images,
-                      width: 60,
-                      height: 40,
-                      fit: BoxFit.fitWidth,
-                    ),
-                    title: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          service.name,
-                          style: GoogleFonts.openSans(
-                            fontSize: 30,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        Text(
-                          service.price,
-                          style: GoogleFonts.poppins(
-                            fontWeight: FontWeight.w200,
-                          ),
-                        ),
-                      ],
-                    ),
-                    subtitle: Text(service.description,style: GoogleFonts.poppins()),
-
-                    trailing: OutlinedButton(
-                      onPressed: () {
-                        _toggleService(service);
-                      },
-                      style: OutlinedButton.styleFrom(
-                      ),
-                      child: Text(
-                        selectedServices.contains(service) ? 'Remove' : 'Add',
-                        style: GoogleFonts.poppins(
+    return Column(
+      children: [
+        Expanded(
+          child: ListView.builder(
+            padding: EdgeInsets.symmetric(vertical: 1),
+            itemCount: ServicesList.length,
+            itemBuilder: (context, index) {
+              Services service = ServicesList[index];
+              return Card(
+                child: ListTile(
+                  leading: Image.asset(
+                    service.images,
+                    width: 60,
+                    height: 40,
+                    fit: BoxFit.fitWidth,
+                  ),
+                  title: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        service.name,
+                        style: GoogleFonts.openSans(
                           textStyle: TextStyle(
-                            color: Colors.brown,
-                            letterSpacing: .5,
                             fontSize: 20,
                           ),
                         ),
                       ),
+                      SizedBox(height: 4),
+                      Text(
+                        service.price,
+                        style: GoogleFonts.poppins(
+                          textStyle: TextStyle(
+                            fontSize: 15,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  subtitle: Text(
+                    service.description,
+                    style: GoogleFonts.poppins(
+                      textStyle: TextStyle(
+                        fontSize: 10,
+                      ),
                     ),
                   ),
-                );
-              },
-            ),
+                  trailing: ElevatedButton(
+                    onPressed: () {
+                      _toggleService(service);
+                    },
+                    style: ElevatedButton.styleFrom(
+                      primary: selectedServices.contains(service)
+                          ? Colors.brown[100]
+                          : Colors.brown,
+                    ),
+                    child: Text(
+                      selectedServices.contains(service) ? 'Remove' : 'Add',
+                      style: GoogleFonts.openSans(
+                        textStyle: TextStyle(
+                          color: Colors.white,
+                          letterSpacing: .5,
+                          fontSize: 20,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              );
+            },
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 
@@ -105,113 +118,122 @@ class _ListScreenState extends State<ListScreen> {
           builder: (context, setState) {
             return Container(
               decoration: BoxDecoration(
-                gradient: LinearGradient(colors: [
-                  Colors.grey.withOpacity(0.4),
-                  Colors.black.withOpacity(0.7),
-                  Colors.black.withOpacity(0.7),
-                  Colors.black.withOpacity(0.7),
-                  Colors.grey.withOpacity(0.4),
-                ], begin: Alignment.topLeft, end: Alignment.bottomRight),
-                borderRadius: BorderRadius.all(Radius.circular(30)),
+                color: Colors.transparent,
               ),
-              padding: EdgeInsets.all(16.0),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Text(
-                    'Services',
-                    style: GoogleFonts.openSans(
-                      textStyle: TextStyle(
-                        color: Colors.white,
-                        letterSpacing: .5,
-                        fontSize: 20,
-                      ),
-                    ),
-                  ),
-                  Divider(
-                    thickness: 2,
-                    endIndent: 15,
-                    indent: 15,
-                  ),
-                  for (Services service in selectedServices) ...[
-                    SizedBox(height: 8, width: 40),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          service.name,
-                          style: GoogleFonts.openSans(
-                            textStyle: TextStyle(
-                              color: Colors.white,
-                              letterSpacing: .5,
-                              fontSize: 18,
-                            ),
-                          ),
-                        ),
-                        SizedBox(width: 10),
-                        Text(
-                          '-',
-                          style: GoogleFonts.poppins(
-                            textStyle: TextStyle(
-                              color: Colors.white,
-                              letterSpacing: .5,
-                              fontSize: 18,
-                            ),
-                          ),
-                        ),
-                        SizedBox(width: 10),
-                        Text(
-                          service.price,
-                          style: GoogleFonts.poppins(
-                            textStyle: TextStyle(
-                              color: Colors.white,
-                              letterSpacing: .5,
-                              fontSize: 18,
-                            ),
-                          ),
-                        ),
+              child: ClipRRect(
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(20),
+                  topRight: Radius.circular(20),
+                ),
+                child: Container(
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      colors: [
+                        Colors.brown.withOpacity(0.5),
+                        Colors.brown.withOpacity(0.7),
+                        Colors.brown.withOpacity(0.9),
+                        Colors.brown.withOpacity(0.7),
+                        Colors.brown.withOpacity(0.5),
                       ],
-                    ),
-                  ],
-                  SizedBox(height: 16, width: 40),
-                  Text(
-                    'Total Amount : Rs. $totalAmount/-',
-                    style: GoogleFonts.acme(
-                      textStyle: TextStyle(
-                        color: Colors.white,
-                        letterSpacing: .5,
-                        fontSize: 24,
-                      ),
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
                     ),
                   ),
-                  SizedBox(height: 10),
-                  if (totalAmount > 0)
-                    RawMaterialButton(
-                      onPressed: () {
-                        Navigator.pop(context);
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (context) => ConfirmationScreen()));
-
-                         },
-                      fillColor: Colors.black,
-                      constraints: BoxConstraints(maxHeight: 100),
-                      elevation: 2,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(5),
-                      ),
-                      child: Text(
-                        'Book',
+                  padding: EdgeInsets.all(16.0),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Text(
+                        'Selected Services',
                         style: GoogleFonts.openSans(
                           textStyle: TextStyle(
                             color: Colors.white,
-                            letterSpacing: .6,
+                            letterSpacing: .5,
                             fontSize: 20,
                           ),
                         ),
                       ),
-                    ),
-                ],
+                      Divider(
+                        thickness: 2,
+                        endIndent: 15,
+                        indent: 15,
+                        color: Colors.white,
+                      ),
+                      for (Services service in selectedServices) ...[
+                        SizedBox(height: 8),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Expanded(
+                              child: Text(
+                                service.name,
+                                style: GoogleFonts.openSans(
+                                  textStyle: TextStyle(
+                                    color: Colors.white,
+                                    letterSpacing: .5,
+                                    fontSize: 18,
+                                  ),
+                                ),
+                              ),
+                            ),
+                            SizedBox(width: 1),
+                            Text(
+                              service.price,
+                              style: GoogleFonts.openSans(
+                                textStyle: TextStyle(
+                                  color: Colors.white,
+                                  letterSpacing: .5,
+                                  fontSize: 18,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                      SizedBox(height: 16),
+                      Text(
+                        'Total Amount : Rs. $totalAmount/-',
+                        style: GoogleFonts.poppins(
+                          textStyle: TextStyle(
+                            color: Colors.white,
+                            letterSpacing: .5,
+                            fontSize: 24,
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: 10),
+                      // Conditionally render RawMaterialButton
+                      if (totalAmount > 0)
+                        RawMaterialButton(
+                          onPressed: () {
+                            Navigator.pop(context);
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                builder: (context) => ConfirmationScreen()));
+                          },
+                          fillColor: Colors.black,
+                          constraints: BoxConstraints(maxHeight: 100),
+                          elevation: 2,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(5),
+                          ),
+                          padding: EdgeInsets.symmetric(horizontal: 20),
+                          child: Text(
+                            'Book',
+                            style: GoogleFonts.poppins(
+                              textStyle: TextStyle(
+                                color: Colors.white,
+                                letterSpacing: .6,
+                                fontSize: 20,
+                              ),
+                            ),
+                          ),
+                        ),
+                    ],
+                  ),
+                ),
               ),
             );
           },
