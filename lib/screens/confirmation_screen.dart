@@ -106,6 +106,7 @@ class ConfirmationScreen extends StatelessWidget {
                     ),
                     Divider(
                       color: Colors.black54,
+                      thickness: 2,
                     ),
                     SizedBox(height: 10),
                     Center(

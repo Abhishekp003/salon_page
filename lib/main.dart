@@ -21,71 +21,61 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: isDarkMode ? AppTheme.darkTheme : AppTheme.lightTheme,
-      darkTheme: AppTheme.darkTheme,
-      themeMode: isDarkMode ? ThemeMode.dark : ThemeMode.light,
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         body: Stack(
-            children: [
-        Container(
-        decoration: BoxDecoration(
-        image: DecorationImage(
-            image: AssetImage("image/background2.jpeg"),
-        fit: BoxFit.cover,
-      ),
-    ),
-    ),
-    Container(
-    decoration: BoxDecoration(color: Color.fromRGBO(255, 255, 255, 0.8)),
-    ),
-           Column(
-            children: [
-              Padding(
-                padding: EdgeInsets.only(top: 10.0),
+          children: [
+            Container(
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage("image/background2.jpeg"),
+                  fit: BoxFit.cover,
+                ),
               ),
-              Row(
-                children: [
-                  Padding(padding: EdgeInsets.symmetric(horizontal: 5)),
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(10.0),
-                    child: Image.asset(
-                      "image/scissors2.png",
-                      height: 100,
-                      width: 100,
+            ),
+            Container(
+              decoration: BoxDecoration(color: Color.fromRGBO(255, 255, 255, 0.8)),
+            ),
+            Column(
+              children: [
+                Padding(
+                  padding: EdgeInsets.only(top: 10.0),
+                ),
+                Row(
+                  children: [
+                    Padding(padding: EdgeInsets.symmetric(horizontal: 5)),
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(10.0),
+                      child: Image.asset(
+                        "image/scissors2.png",
+                        height: 100,
+                        width: 100,
+                      ),
                     ),
-                  ),
-                ],
-              ),
-              SizedBox(height: 8,),
-              Row(
-                children: [
-                  Padding(padding: EdgeInsets.only(left: 25)),
-                  Text(
-                    ("Scissor's"),
-                    style: GoogleFonts.openSans(fontSize: 20,fontWeight: FontWeight.w700),
-                  ),
-              SizedBox(width: 20,),
-                  Text(
+                  ],
+                ),
+                SizedBox(height: 8,),
+                Row(
+                  children: [
+                    Padding(padding: EdgeInsets.only(left: 25)),
+                    Text(
+                      ("Scissor's"),
+                      style: GoogleFonts.openSans(fontSize: 20, fontWeight: FontWeight.w700),
+                    ),
+                    SizedBox(width: 20,),
+                    Text(
                       "Services",
-                      style:GoogleFonts.openSans(fontSize: 30,fontWeight: FontWeight.bold)
-                  )
-                ],
-              ),
-              Expanded(
-                child: ListScreen(),
-              ),
-              Switch(
-                value: isDarkMode,
-                onChanged: (value) {
-                  setState(() {
-                    isDarkMode = value;
-                  });
-                },
-              ),
-            ],
-          ),
-        ]),
+                      style: GoogleFonts.openSans(fontSize: 30, fontWeight: FontWeight.bold),
+                    ),
+                  ],
+                ),
+                Expanded(
+                  child: ListScreen(),
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
